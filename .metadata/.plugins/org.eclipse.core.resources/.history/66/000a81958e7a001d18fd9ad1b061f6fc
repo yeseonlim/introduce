@@ -1,0 +1,100 @@
+package controller;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import domain.GuestBookVO;
+import service.GuestBookService;
+import service.GuestBookServiceImpl;
+
+
+@WebServlet("/gbc/")
+public class GuestBookController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private static final Logger log = LoggerFactory.getLogger(GuestBookController.class);
+	private GuestBookService gsv;
+	private int isOk;
+       
+
+    public GuestBookController() {
+        gsv = new GuestBookServiceImpl();
+    }
+
+
+	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		res.setCharacterEncoding("utf-8");
+		
+		String uri = req.getRequestURI();
+		String path = uri.substring(uri.lastIndexOf("/")+1);
+		
+		switch(path) {
+		case "post":
+			try {
+				StringBuffer sb = new StringBuffer();
+				String line = null;
+				BufferedReader br = req.getReader(); //댓글 객체를 읽어옴
+				while((line = br.readLine())!=null) { //값이 남아있다면
+					sb.append(line);
+				}
+				log.info("sb>>"+sb.toString());
+				JSONParser parser = new JSONParser();
+				JSONObject jsonObj = (JSONObject)parser.parse(sb.toString());
+				
+				int gno = Integer.parseInt(jsonObj.get("no").toString());
+				String writer = jsonObj.get("writer").toString();
+				String cotent = jsonObj.get("content").toString();
+				isOk = gsv.post(new GuestBookVO(gno, writer, cotent));
+				
+				PrintWriter out = res.getWriter();
+				out.print(isOk);
+			} catch (Exception e) {
+				log.info("post error");
+				e.printStackTrace();
+			}
+			break;
+		case "list":
+			try {
+				List<GuestBookVO> list = gsv.getList(Integer.parseInt(path));
+				log.info("list DB success");
+				JSONObject[] jsonObjArr = new JSONObject[list.size()];
+				JSONArray jsonObjList = new JSONArray();
+				for(int i=0; i<list.size(); i++) {
+					
+				}
+			} catch (Exception e) {
+				log.info("list error");
+				e.printStackTrace();
+			}
+			break;
+		}
+		
+
+	}
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		service(request, response);
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		service(request, response);
+	}
+
+}

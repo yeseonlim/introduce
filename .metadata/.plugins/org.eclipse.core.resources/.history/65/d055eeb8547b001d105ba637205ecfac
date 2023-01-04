@@ -1,0 +1,38 @@
+const content = "안녕하세요, 임예선입니다. Hello, i am yeseon lim. 大家好，我是任礼仙。今日は、私はｲﾑ･ｲｪｿﾝです。";
+const text = document.querySelector("#main .content1 h1");
+let textIdx = 0;
+
+function typing(){
+    let txt = content[textIdx++];
+    text.innerHTML += txt;
+
+    if (textIdx > content.length) {
+        text.textContent = "";
+        textIdx = 0;
+    }
+}
+setInterval(typing, 300);
+
+/* slide */
+var slides = document.querySelector('.slides'),
+	slide = document.querySelectorAll('.slides li'),
+	currentIdx = 0,
+	slideCount = slide.length,
+	prevBtn = document.querySelector('.prev'),
+	slideWidth = 300,
+	slideMargin = 30,
+	nextBtn = document.querySelector('.next');
+	
+	slides.style.width = (slideWidth + slideMargin)*slideCount -slideMargin+'px';
+	function moveSlide(num){
+		slides.style.left = -num*330+'px';
+		currentIdx = num;
+	}
+	nextBtn.addEventListener('click', function(){
+		if(currentIdx < slideCount -1){
+			moveSlide(currentIdx +1);
+			console.log(currentIdx);
+		}else{
+			moveSlide(0);
+		}
+	});

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.a img{
+	width:300px;
+	height:500px;
+	box-sizing: border-box;
+	top:50%;
+	left:50%;
+	transform:translate(-50% -50%);
+}
+.a{
+	width:50%;
+	float:left;
+}
+.info{
+	width:50%;
+	float:right;
+}

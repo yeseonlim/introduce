@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.a img{
+	width:200px;
+	height:400px;
+	box-sizing: border-box;
+}
+.main{
+	top:50%;
+	left:50%;
+	transform:translate(-50% -50%);
+}

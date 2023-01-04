@@ -1,0 +1,9 @@
+package repository;
+
+import domain.GuestBookVO;
+
+public interface GuestBookDAO {
+
+	int insert(GuestBookVO gvo);
+
+}

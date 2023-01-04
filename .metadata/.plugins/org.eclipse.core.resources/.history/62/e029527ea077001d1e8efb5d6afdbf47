@@ -1,0 +1,68 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>about page</title>
+<style>
+      * {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        color:black;
+        box-sizing: border-box;
+      }
+      .left {
+        width: 20%;
+        height:100vh;
+        float: left;
+      }
+       ul{
+      	width:250px;
+      	margin-top:55%;
+      	margin-left:auto;
+      	margn-right:auto;
+      }
+      li {
+        font-size:20px;
+        font-weight:bold;
+        text-align: left;
+        padding: 30px 0;
+        list-style: none;
+      }
+      li a {
+        text-decoration: none;
+      }
+      .right {
+        width: 80%;
+        height:100vh;
+        float: right;
+      }
+      
+    </style>
+</head>
+<body>
+	<div class="left">
+		<ul>
+			<li><a href="">Home</a></li>
+			<li><a href="">About</a></li>
+			<li><a href="">Experience</a></li>
+			<li><a href="">What i love</a></li>
+			<li><a href="">Guest Book</a></li>
+		</ul>
+	</div>
+	<div class="right">
+		<div class="pic">
+			<img alt="" src="/resources/img/me.jpg">
+		</div>
+		<div class="info">
+		Name : 임예선
+		Birth : 1995.09.04
+		Contact : 010-4108-9528
+		E-mail : @gmail.com
+		</div>
+	</div>
+</body>
+</html>

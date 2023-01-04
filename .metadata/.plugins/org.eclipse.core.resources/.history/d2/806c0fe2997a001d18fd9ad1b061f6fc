@@ -1,0 +1,14 @@
+const content = "안녕하세요, 임예선입니다. Hello, i am yeseon lim. 大家好，我是任礼仙。今日は、私はｲﾑ･ｲｪｿﾝです。";
+const text = document.querySelector(".main h1");
+let textIdx = 0;
+
+function typing(){
+    let txt = content[textIdx++];
+    text.innerHTML += txt;
+
+    if (textIdx > content.length) {
+        text.textContent = "";
+        textIdx = 0;
+    }
+}
+setInterval(typing, 300);

@@ -1,0 +1,9 @@
+package repository;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class GuestBookDAOImpl implements GuestBookDAO {
+	private static final Logger log = LoggerFactory.getLogger(GuestBookDAOImpl.class);
+	
+}

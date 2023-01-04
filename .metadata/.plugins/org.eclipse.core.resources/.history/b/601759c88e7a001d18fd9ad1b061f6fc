@@ -1,0 +1,12 @@
+package service;
+
+import java.util.List;
+
+import domain.GuestBookVO;
+
+public interface GuestBookService {
+
+	int post(GuestBookVO gvo);
+
+
+}

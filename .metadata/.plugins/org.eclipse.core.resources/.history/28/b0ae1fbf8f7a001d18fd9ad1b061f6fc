@@ -1,0 +1,6 @@
+@charset "UTF-8";
+.a img{
+width:100px;
+height:300px;
+box-sizing: border-box;
+}

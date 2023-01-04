@@ -1,0 +1,82 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>방명록 작성페이지</title>
+<style type="text/css">
+@font-face{
+		font-family:cute;
+		src:url(/resources/Cute_Font/CuteFont-Regular.ttf);
+		}
+		html{
+			scroll-behavior:smooth;
+		}
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+        font-family: cute;
+      }
+      header{
+      	height:100vh;
+      }
+      section{
+      	height:100vh;
+      }
+      .left {
+      	position:fixed;
+        width: 20%;
+        float: left;
+      }
+      header ul{
+      	width:250px;
+      	margin-top:55%;
+      	margin-left:auto;
+      	margin-right:auto;
+      }
+      header li{
+        font-size:2em;
+        font-weight:bold;
+        text-align: left;
+        padding: 30px 0;
+      }
+      li a {
+        color:black;
+        text-decoration: none;
+      }
+      .right {
+        width: 80%;
+        float: right;
+        
+      }
+</style>
+</head>
+<body>
+	<header>
+		<div class="left">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#experience">Experience</a></li>
+				<li><a href="#whatilove">What i love</a></li>
+				<li><a href="#guestbook">Guest Book</a></li>
+			</ul>
+		</div>
+	</header>
+		<section id="write">
+		<div class="right">
+			<div class="content6">
+				<form action="/gbc/insert" method="post">
+					작성자 : <input type="text" name="writer"><br>
+					내용 : <textarea rows="3" cols="30" name="content" ></textarea><br>
+					<button type="submit"> 등록 </button>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

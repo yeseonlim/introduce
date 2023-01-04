@@ -1,0 +1,16 @@
+package domain;
+
+public class GuestBook {
+	private int gno;
+	private String writer;
+	private String content;
+	private String reg_date;
+	
+	public GuestBook() {}
+	
+	//posting
+	public GuestBook(String writer, String content) {
+		this.writer= writer;
+		this.content= content;
+	}
+}

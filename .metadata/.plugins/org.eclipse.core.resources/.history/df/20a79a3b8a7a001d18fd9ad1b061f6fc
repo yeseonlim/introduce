@@ -1,0 +1,20 @@
+document.getElementById('gbBtn').addEventListener('click',()=>{
+	const gbText = document.getElementById('gbText').value;
+	if(gbText ==null ||gbText==""){
+		alert('방명록을 남겨주세요');
+		return false;
+	}else{
+		let gbData = {
+			gno : gnoVal,
+			writer : document.getElementById('gbWriter').value,
+			content : gbText
+		};
+		postGusetBookToServer(gbData).then(result=>{
+			if(result>0){
+				alert('방명록이 등록되었습니다');
+				document.getElementById('gbText').value = ""
+			}
+			printGuestBookList(gbData.gno);
+		})
+	}
+})
